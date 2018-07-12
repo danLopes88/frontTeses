@@ -1,0 +1,23 @@
+<br><br>
+<div class="container">
+
+<div class="container">
+  <div class="row" >
+    <div class="col-sm-4" *ngFor="let repositorio of data" >
+      <a [routerLink]="['/repositorio',repositorio._id]"></a>
+      <div class="panel panel-primary" >
+        <div class="panel-heading">{{ repositorio.name }}</div>
+        <div class="panel-body"><img src="https://ipca.pt/wp-content/uploads/2015/12/logo_est_normal_7.png" class="img-responsive" style="width:100%" alt="Image"></div>
+<div class="panel-footer">
+  <div class="button">
+    <button type="button" (click)="navigatetoRepositorio(repositorio)" class="btn btn-success">
+<a [routerLink]="['/repositorio',repositorio._id]">Ver mais +</a>
+    </button>
+  </div>
+</div>
+      </div>
+    </div>
+
+  </div>
+</div><br><br>
+
