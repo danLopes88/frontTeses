@@ -11,10 +11,14 @@ export class TesesService {
   constructor(private http: Http) { }
 
   getDataTeses(params) {
-    return this.http.get(this.apiUrl + "/teses", {
-      params: {
-          params
-      }
-    });
+    return this.http.get(this.apiUrl + "/teses", params);
+  }
+
+    getTese(id: string){
+    return this.http.get(this.apiUrl + "/teses/" + id);
+  }
+
+  getTeseNome(nome: string){
+    return this.http.get(this.apiUrl + "/teses?title=" + nome);
   }
 }

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TesesService } from 'src/services/teses.service';
 import { ActivatedRoute, Router} from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PagerServiceService } from 'src/services/pager-service.service';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import {HttpParams} from '@angular/common/http';
+import { Tese } from '../data/tese';
 @Component({
   selector: 'app-teses',
   templateUrl: './teses.component.html',
@@ -14,14 +15,20 @@ import {HttpParams} from '@angular/common/http';
 export class TesesComponent implements OnInit {
 
   data: Array<any> = [];
-  constructor(public tesesService: TesesService, private pagerService: PagerServiceService) { }
-  private allItems: any[];
+  constructor(public tesesService: TesesService, private pagerService: PagerServiceService, private router: Router, private route: ActivatedRoute) {
+    this.getTeses();
+   }
 
-  searchText: string;
+  @Input('tese') tese: Tese;
+
+  private allItems: any[];
   pager: any = {};
   pagedItems: any[];
+  title: string = "";
+  creator: string = "";
+  repNome: string = "";
 
-
+  searchText: string;
 
 
   getData(params) {
@@ -30,7 +37,7 @@ export class TesesComponent implements OnInit {
 
   getTeses() {
 
-    const params = new HttpParams().set('repNome', this.searchText);
+    const params = new HttpParams().set('title', this.title);
 
   	this.getData(params).subscribe(data => {
       this.allItems = data.json();
@@ -40,7 +47,17 @@ export class TesesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getTeses();
+    //this.getTeses();
+  }
+  // pesquisaTese() {
+  //   console.dir(this.title);
+  //   this.tesesService.getTeseNome(this.title).subscribe(res:Response)=>{
+
+  //   }
+  // }
+
+  navigateToTese(tese: Tese) {
+    this.router.navigate(['repositorio', tese]);
 
   }
 

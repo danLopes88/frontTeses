@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'repositorios', component: RepositoriosComponent },
   { path: 'repositorio/:id', component: RepositorioPerfilComponent },
   { path: 'teses', component: TesesComponent },
-  { path : 'tese/:id', component: TesePerfilComponent}
+  { path : 'teses/:id', component: TesePerfilComponent}
 
 ];
 
@@ -21,4 +21,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents= [ RepositoriosComponent,TesesComponent,LoginComponent,RepositorioPerfilComponent ]
+export const routingComponents = [RepositoriosComponent, TesesComponent, LoginComponent, RepositorioPerfilComponent, TesePerfilComponent]
