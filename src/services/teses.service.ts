@@ -7,10 +7,14 @@ import {Http, Response, RequestOptions, Headers} from '@angular/http';
 export class TesesService {
 
   private apiUrl : string = "https://agile-stream-33711.herokuapp.com/api/v1";
-
+  //private apiUrl: string = "http://jsonplaceholder.typicode.com/posts";
   constructor(private http: Http) { }
 
-  getDataTeses(){
-    return this.http.get(this.apiUrl + "/teses");
+  getDataTeses(params) {
+    return this.http.get(this.apiUrl + "/teses", {
+      params: {
+          params
+      }
+    });
   }
 }

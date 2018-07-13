@@ -4,13 +4,15 @@ import { RepositoriosComponent } from './repositorios/repositorios.component';
 import { LoginComponent } from './login/login.component';
 import { TesesComponent } from './teses/teses.component';
 import { RepositorioPerfilComponent } from './repositorio-perfil/repositorio-perfil.component';
+import { TesePerfilComponent } from './tese-perfil/tese-perfil.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
-  { path: 'repositorios',component: RepositoriosComponent },
-  { path: 'repositorio/:id',component: RepositorioPerfilComponent },
-  { path: 'teses',component: TesesComponent }
+  { path: 'repositorios', component: RepositoriosComponent },
+  { path: 'repositorio/:id', component: RepositorioPerfilComponent },
+  { path: 'teses', component: TesesComponent },
+  { path : 'tese/:id', component: TesePerfilComponent}
 
 ];
 

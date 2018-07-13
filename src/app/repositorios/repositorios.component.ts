@@ -38,7 +38,7 @@ export class RepositoriosComponent implements OnInit {
   }
 
   navigatetoRepositorio(repositorio: Repositorio) {
-    this.router.navigate(['repositorio', repositorio.id], { queryParams : { repositorio} });
+    this.router.navigate(['repositorio', repositorio]);
 
   }
 }

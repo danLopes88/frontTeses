@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Repositorio } from '../data/repositorio';
+import { RepositoriosService } from '../../services/repositorios.service';
 
 
 @Component({
@@ -11,14 +12,28 @@ import { Repositorio } from '../data/repositorio';
 export class RepositorioPerfilComponent implements OnInit {
 
   @Input('repositorio') repositorio: Repositorio;
+  nome: string;
+  id: any;
+  private sub: any;
+  data: Array<any> = [];
+  constructor(public repositorioService: RepositoriosService, private route: ActivatedRoute) { }
 
-  constructor(private router: Router, private route: ActivatedRoute) {
-    route.params.subscribe(params => { this.repositorio.id = params['id']; });
+  getData() {
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+    return this.repositorioService.getRepositorio(this.id);
+  }
+
+  getRepositorio() {
+    this.getData().subscribe(data => {
+      this.data = data.json();
+      console.log(this.data);
+    });
   }
 
   ngOnInit() {
+    this.getRepositorio();
   }
-
-
 
 }

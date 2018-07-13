@@ -16,4 +16,11 @@ export class RepositoriosService {
   	return this.http.get(this.apiUrl + "/repositories");
   }
 
+  getRepositorio(id: string){
+    return this.http.get(this.apiUrl + "/repositories/" + id);
+  }
+
+  addRepositorio(){
+    
+  }
 }
